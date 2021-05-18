@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'SignUpWithEmail.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -28,7 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SafeArea(
         child: Column(
           children: [
             Row(
@@ -63,7 +65,10 @@ class _MyHomePageState extends State<MyHomePage> {
               child: RaisedButton(
                 child:
                     Text("Sign Up with Email", style: TextStyle(fontSize: 20)),
-                onPressed: () => print("sign up with email button pressed"),
+                onPressed: (){
+                  print("sign up with email button pressed");
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignUpWithEmail()));
+                },
               ),
             ),
             ButtonTheme(
