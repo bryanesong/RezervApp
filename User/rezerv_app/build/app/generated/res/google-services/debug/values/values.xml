@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">321235962489-3aodvpb4fj2isvd7g9ucvl7alaojmv0p.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">321235962489</string>
+    <string name="google_api_key" translatable="false">AIzaSyBZ0KepY1hrPn60PkPPcNWbOoWaT1OI2wI</string>
+    <string name="google_app_id" translatable="false">1:321235962489:android:a0935c45acd3f7ea66a2a8</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBZ0KepY1hrPn60PkPPcNWbOoWaT1OI2wI</string>
+    <string name="google_storage_bucket" translatable="false">rezerv-c588c.appspot.com</string>
+    <string name="project_id" translatable="false">rezerv-c588c</string>
+</resources>
