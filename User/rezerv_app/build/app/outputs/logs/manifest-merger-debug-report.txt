@@ -7,6 +7,7 @@ INJECTED from F:\FlutterProjectFolder\Rezerv\User\rezerv_app\android\app\src\mai
 MERGED from F:\FlutterProjectFolder\Rezerv\User\rezerv_app\android\app\src\main\AndroidManifest.xml:1:1-47:12
 MERGED from [:firebase_analytics] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-19:12
 MERGED from [:firebase_auth] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:firebase_database] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_core_web] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_core_web\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.firebase:firebase-analytics:19.0.0] C:\Users\Beary\.gradle\caches\transforms-2\files-2.1\f283309e03bced0de0ee58cd2315195b\firebase-analytics-19.0.0\AndroidManifest.xml:2:1-9:12
@@ -86,6 +87,8 @@ MERGED from [:firebase_analytics] F:\FlutterProjectFolder\Rezerv\User\rezerv_app
 MERGED from [:firebase_analytics] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-17:19
 MERGED from [:firebase_auth] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_auth] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_database] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
+MERGED from [:firebase_database] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-13:19
 MERGED from [com.google.firebase:firebase-analytics:19.0.0] C:\Users\Beary\.gradle\caches\transforms-2\files-2.1\f283309e03bced0de0ee58cd2315195b\firebase-analytics-19.0.0\AndroidManifest.xml:7:5-20
@@ -192,6 +195,8 @@ MERGED from [:firebase_analytics] F:\FlutterProjectFolder\Rezerv\User\rezerv_app
 MERGED from [:firebase_analytics] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_auth] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_auth] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_database] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:firebase_database] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core_web] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_core_web\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
@@ -366,6 +371,8 @@ service#com.google.firebase.components.ComponentDiscoveryService
 ADDED from [:firebase_analytics] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_analytics\intermediates\library_manifest\debug\AndroidManifest.xml:12:9-16:19
 MERGED from [:firebase_auth] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_auth] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_database] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
+MERGED from [:firebase_database] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_core] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 MERGED from [:firebase_core] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:8:9-12:19
 MERGED from [com.google.firebase:firebase-database:20.0.0] C:\Users\Beary\.gradle\caches\transforms-2\files-2.1\00dc0ef644216910e7c3f3d5a1382859\firebase-database-20.0.0\AndroidManifest.xml:29:9-35:19
@@ -398,6 +405,12 @@ ADDED from [:firebase_auth] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build
 		ADDED from [:firebase_auth] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_auth] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-122
+meta-data#com.google.firebase.components:io.flutter.plugins.firebase.database.FlutterFirebaseAppRegistrar
+ADDED from [:firebase_database] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
+	android:value
+		ADDED from [:firebase_database] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:11:17-82
+	android:name
+		ADDED from [:firebase_database] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_database\intermediates\library_manifest\debug\AndroidManifest.xml:10:17-127
 meta-data#com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseAppRegistrar
 ADDED from [:firebase_core] F:\FlutterProjectFolder\Rezerv\User\rezerv_app\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:9:13-11:85
 	android:value

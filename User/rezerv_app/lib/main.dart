@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'HomeScreen.dart';
 import 'SignUpWithEmail.dart';
 
 void main() {
@@ -149,7 +150,12 @@ class _MyHomePageState extends State<MyHomePage> {
               child: RaisedButton(
                 child:
                 Text("Sign In", style: TextStyle(fontSize: 20)),
-                onPressed: () => print("Sign in button pressed."),
+                onPressed: (){
+                  print("Sign in button pressed.");
+
+                  //will need sign in verification but placeholder for now
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
+                },
               ),
             ),
           ],
