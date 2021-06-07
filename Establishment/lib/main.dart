@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'SignUpWithEmail.dart';
+import 'NavBar.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,11 +23,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   bool _checked = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Column(
+      body: SafeArea(
+        child: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 50),
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -37,25 +41,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 Image.asset('assets/rezervLogo.png'),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CustomPaint(
-                  size: Size(getWidthPercentageInPixels(100), getHeightPercentageInPixels(2)),
-                  painter: LinePainter(),
-                ),
-              ],
-            ),
             Padding(
               padding: EdgeInsets.all(getHeightPercentageInPixels(2)),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Log In to \nRezerv Business", textAlign: TextAlign.center, style: TextStyle(fontSize: 30)),
+                Text("Log In to \nRezerv Business",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 30)),
               ],
             ),
-            Padding(padding: EdgeInsets.all(getHeightPercentageInPixels(1)),),
+            Padding(
+              padding: EdgeInsets.all(getHeightPercentageInPixels(1)),
+            ),
             Container(
               width: getWidthPercentageInPixels(70),
               child: Column(
@@ -71,7 +70,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-            Padding(padding: EdgeInsets.all(getHeightPercentageInPixels(0.5)),),
+            Padding(
+              padding: EdgeInsets.all(getHeightPercentageInPixels(0.5)),
+            ),
             Container(
               width: getWidthPercentageInPixels(70),
               child: Column(
@@ -81,8 +82,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   TextField(
                     obscureText: true,
                     decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: 'Password',
+                      border: OutlineInputBorder(),
+                      labelText: 'Password',
                     ),
                   ),
                 ],
@@ -95,9 +96,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 title: const Text('Remember Me'),
                 controlAffinity: ListTileControlAffinity.leading,
                 value: _checked,
-                onChanged: (bool value){
+                onChanged: (bool value) {
                   setState(() {
-                    print("Remember me check was pressed. Current value: "+value.toString()); //used for debugging
+                    print("Remember me check was pressed. Current value: " +
+                        value.toString()); //used for debugging
                     _checked = value;
                   });
                 },
@@ -107,16 +109,19 @@ class _MyHomePageState extends State<MyHomePage> {
               minWidth: getWidthPercentageInPixels(60),
               height: getHeightPercentageInPixels(5),
               child: ElevatedButton(
-                child:
-                Text("Sign In", style: TextStyle(fontSize: 20)),
-                onPressed: () => print("Sign in button pressed"),
+                child: Text("Sign In", style: TextStyle(fontSize: 20)),
+                onPressed: () {
+                  print("Sign in button pressed");
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => NavBar()));
+                },
               ),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomPaint(
-                  size: Size(getWidthPercentageInPixels(40),
+                  size: Size(getWidthPercentageInPixels(30),
                       getHeightPercentageInPixels(2)),
                   painter: LinePainter(),
                 ),
@@ -128,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding: EdgeInsets.all(getHeightPercentageInPixels(1)),
                 ),
                 CustomPaint(
-                  size: Size(getWidthPercentageInPixels(40),
+                  size: Size(getWidthPercentageInPixels(30),
                       getHeightPercentageInPixels(2)),
                   painter: LinePainter(),
                 ),
@@ -137,7 +142,8 @@ class _MyHomePageState extends State<MyHomePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("New to Rezerv Business? \nClick here to apply for an \nestablishment account",
+                Text(
+                    "New to Rezerv Business? \nClick here to apply for an \nestablishment account",
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 20)),
               ],
@@ -146,9 +152,14 @@ class _MyHomePageState extends State<MyHomePage> {
               minWidth: getWidthPercentageInPixels(60),
               height: getHeightPercentageInPixels(5),
               child: ElevatedButton(
-                child:
-                Text("Apply for partnership", style: TextStyle(fontSize: 20)),
-                onPressed: () => print("Application button pressed"),
+                child: Text("Apply for partnership",
+                    style: TextStyle(fontSize: 20)),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignUpWithEmail()),
+                  );
+                },
               ),
             ),
           ],
@@ -156,6 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
   double getWidthPercentageInPixels(double percent) {
     return MediaQuery.of(context).size.width * (percent / 100);
   }
