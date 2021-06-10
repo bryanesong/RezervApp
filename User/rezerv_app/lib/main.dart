@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 import 'HomeScreen.dart';
@@ -27,12 +29,15 @@ class _MyHomePageState extends State<MyHomePage> {
   //variables
   bool _checked = false;
 
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
+        child: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 20),
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -110,6 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   Text("Email", style: TextStyle(fontSize: 25)),
                   TextField(
+                    controller: emailController,
                     decoration: InputDecoration(
                         border: OutlineInputBorder()),
                   ),
@@ -123,6 +129,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                   Text("Password", style: TextStyle(fontSize: 25)),
                   TextField(
+                    obscureText: true,
+                    controller: passwordController,
                     decoration: InputDecoration(
                         border: OutlineInputBorder()),
                   ),
@@ -153,8 +161,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: (){
                   print("Sign in button pressed.");
 
-                  //will need sign in verification but placeholder for now
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
+                  //sign in authentication method
+                  signInWithEmailAndPassword(context);
                 },
               ),
             ),
@@ -163,6 +171,37 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
+  final FirebaseAuth mAuth = FirebaseAuth.instance;
+
+  void signInWithEmailAndPassword(BuildContext context) async {
+    print("email:" + emailController.text);
+    print("password:" + passwordController.text);
+    final FirebaseUser user = (await mAuth.signInWithEmailAndPassword(
+      email: emailController.text.trim(),
+      password: passwordController.text.trim(),
+    )).user;
+
+
+    print("user info: "+user.toString());
+    if (user != null){
+      print("Login Successful");
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
+    } else {
+      print("Login Failed");
+      Scaffold.of(context).showSnackBar(snackBarFail);
+    }
+  }
+
+  final snackBarFail = SnackBar(
+    content: Text('Unable to Login'),
+    action: SnackBarAction(
+      label: 'Ok',
+      onPressed: () {
+        // Some code to undo the change.
+      },
+    ),
+  );
 
   double getWidthPercentageInPixels(double percent) {
     return MediaQuery.of(context).size.width * (percent / 100);

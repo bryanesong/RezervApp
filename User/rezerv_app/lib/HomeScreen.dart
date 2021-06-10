@@ -1,3 +1,4 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,12 @@ class HomeScreen extends StatefulWidget {
 class HomeScreenState extends State<HomeScreen> {
 
   final String ZIPCODE = "00000";//default placeholder for zipcode is 00000
+
+  @override
+  void initState(){
+
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -273,42 +280,103 @@ class HomeScreenState extends State<HomeScreen> {
 
   var establishmentPlaceholder = ['Establishment 1','Establishment 2','Establishment 3','Establishment 4','Establishment 5'];
 
+  List<Map<dynamic, dynamic>> currentEstablishments = [];
+
+  var _searchResult = [];
+
+
   //different widgets for different scenes
   Widget homeMainWidget(){
-    return Container(
-      //color: Colors.lightBlue,//temporary for bug testing
-      child: ListView.builder(
-        itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Container(
-              padding: EdgeInsets.all(10),
-              height: getHeightPercentageInPixels(10),
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.all(Radius.circular(20))
+    if(ZIPCODE == "00001"){
+      return Container(
+        //color: Colors.lightBlue,//temporary for bug testing
+        child: ListView.builder(
+          itemBuilder: (BuildContext context, int index) {
+            return Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Container(
+                padding: EdgeInsets.all(10),
+                height: getHeightPercentageInPixels(10),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black),
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.all(Radius.circular(20))
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.add_a_photo,
+                      color: Colors.black,
+                      size: 50,
+                    ),
+                    Padding(padding: EdgeInsets.all(getWidthPercentageInPixels(2)),),
+                    Text(establishmentPlaceholder[index],
+                      style: TextStyle(fontSize: 25),
+                    ),
+                  ],
+                ),
               ),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.add_a_photo,
-                    color: Colors.black,
-                    size: 50,
-                  ),
-                  Padding(padding: EdgeInsets.all(getWidthPercentageInPixels(2)),),
-                  Text(establishmentPlaceholder[index],
-                    style: TextStyle(fontSize: 25),
-                  ),
-                ],
-              ),
-            ),
+            );
+          },
+          itemCount: establishmentPlaceholder.length,
+        ),
+      );
+    }else{
+      final dbRef = FirebaseDatabase.instance.reference().child("EstablishmentsByZipCode");
+      return FutureBuilder(
+          future: dbRef.once(),
+          builder: (context, AsyncSnapshot<DataSnapshot> snapshot) {
+            if (snapshot.hasData) {
+              currentEstablishments.clear();
+              Map<dynamic, dynamic> values = snapshot.data.value;
+              values.forEach((key, values) {
+                currentEstablishments.add(values);
+              });
+              return new ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: currentEstablishments.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return ListTile(
+                      title: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 4),
+                        child: Container(
+                          padding: EdgeInsets.all(10),
+                          height: getHeightPercentageInPixels(10),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black),
+                              color: Colors.grey,
+                              borderRadius: BorderRadius.all(Radius.circular(20))
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                child: Image.network(currentEstablishments[index]["Image"]),
+                              ),
+                              Padding(padding: EdgeInsets.all(getWidthPercentageInPixels(2)),),
+                              Text(currentEstablishments[index]["name"],
+                                style: TextStyle(fontSize: 25),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      onTap: (){
+                        print(currentEstablishments[index]["name"]+ " has been pressed.");
+                      },
+                    );
+                  });
+            }
+            return CircularProgressIndicator();
+          }
           );
-        },
-        itemCount: establishmentPlaceholder.length,
-      ),
-    );
+    }
   }
+
+  /*
+  Text("Name: " + currentEstablishments[index]["name"]),
+                          Text("State: "+ currentEstablishments[index]["State"]),
+                          Text("City: " +currentEstablishments[index]["City"]),
+   */
 
   var categories = ["Restaurant", "Fitness Centers","Barbershop/Salons","Theaters","Hotels/Motels","Other"];
   var categoryIcons = [Icons.restaurant,Icons.fitness_center,Icons.content_cut,Icons.theaters,Icons.hotel,Icons.more_horiz];
@@ -363,6 +431,7 @@ class HomeScreenState extends State<HomeScreen> {
               child: Text("Edit Profile"),
               onPressed: (){
                 print("Edit Profile button pressed");
+                testAddData();
               },
             ),
           ),
@@ -482,6 +551,19 @@ class HomeScreenState extends State<HomeScreen> {
 
   double getHeightPercentageInPixels(double percent) {
     return MediaQuery.of(context).size.height * (percent / 100);
+  }
+
+  void testAddData(){ //used to add bogus data to database
+    final databaseReference = FirebaseDatabase.instance.reference();
+
+    databaseReference.child("EstablishmentsByZipCode").child("Zipcode:98075").set({
+      'name': 'McDonalds',
+      'description': 'Big macs for all',
+      'street': '615 228th Ave NE',
+      'City': 'Sammamish',
+      'State': 'WA',
+      'Image': 'https://logos-world.net/wp-content/uploads/2020/04/McDonalds-Logo.png',
+    });
   }
 
 }
